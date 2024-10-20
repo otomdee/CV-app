@@ -2,11 +2,14 @@ import { useState } from 'react'
 import EditComps from './editComps'
 import './App.css'
 import CVPage from './CVPage'
+import CVEducation from './CVEducation'
 
 function App() {
 
   //use App state
   const [nameText, setText] = useState(["","",""]);
+  const [eduArr, setEduArr] = useState([]);
+
 
   function handleNameChange(event, id) {
 
@@ -17,6 +20,14 @@ function App() {
 }
 
 
+  function handleEduChange(event, eduObj) {
+
+    let newArr = [...eduArr];
+    newArr.push(< CVEducation eduObj={eduObj} />)
+
+    setEduArr(newArr);
+  }
+
   return (
       <div className='main'>
         <div className='editDiv'>
@@ -24,12 +35,15 @@ function App() {
           < EditComps 
           nameText={nameText}
           handleNameChange={handleNameChange}
+          handleEduChange={handleEduChange}
           />
         </div>
 
         <div className='cvDiv'>
           <CVPage 
-          nameText={nameText}/>
+          nameText={nameText}
+          eduArr={eduArr}
+          />
         </div>
        </div>
   )

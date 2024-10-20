@@ -1,10 +1,14 @@
-export default function CVPage({nameText}) {
+export default function CVPage({nameText, eduArr}) {
     return (
         <div className="cvPage">
             <div className="cvName">
-                <span>{nameText}</span>
-                <span></span>
-                <span></span>
+                <span className="fullNameDiv">{nameText[0]}</span>
+                <span className="emailDiv">{nameText[1]}</span>
+                <span className="phoneDiv">{nameText[2]}</span>
+            </div>
+
+            <div className="eduArrs">
+                {eduArr}
             </div>
         </div>
     )
