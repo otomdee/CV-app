@@ -3,13 +3,14 @@ import EditComps from './editComps'
 import './App.css'
 import CVPage from './CVPage'
 import CVEducation from './CVEducation'
+import CVExperience from './CVExperience'
 
 function App() {
 
   //use App state
   const [nameText, setText] = useState(["","",""]);
   const [eduArr, setEduArr] = useState([]);
-
+  const [expArr, setExpArr] = useState([]);
 
   function handleNameChange(event, id) {
 
@@ -19,13 +20,18 @@ function App() {
     setText(newText);
 }
 
-
   function handleEduChange(event, eduObj) {
-
     let newArr = [...eduArr];
     newArr.push(< CVEducation eduObj={eduObj} />)
 
     setEduArr(newArr);
+  }
+
+  function handleExpChange(event, expObj) {
+    let newArr = [...expArr];
+    newArr.push(< CVExperience expObj={expObj} />)
+
+    setExpArr(newArr);
   }
 
   return (
@@ -36,6 +42,7 @@ function App() {
           nameText={nameText}
           handleNameChange={handleNameChange}
           handleEduChange={handleEduChange}
+          handleExpChange={handleExpChange}
           />
         </div>
 
@@ -43,6 +50,7 @@ function App() {
           <CVPage 
           nameText={nameText}
           eduArr={eduArr}
+          expArr={expArr}
           />
         </div>
        </div>

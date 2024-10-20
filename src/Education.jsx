@@ -49,7 +49,7 @@ export default function Education({handleEduChange}) {
             onChange={(event) => setFormValues({...formValues, endDate: event.target.value})}/>
 
             <button id="educationSubmit" type="submit">Save</button>
-            <button id="educationCancel"onClick={handleCancel}>Cancel</button>
+            <button id="educationCancel" type="button" onClick={handleCancel}>Cancel</button>
         </form>
     )
 }

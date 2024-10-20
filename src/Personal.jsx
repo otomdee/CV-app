@@ -1,5 +1,4 @@
 export default function Personal({nameText, handleNameChange}) {
-
     
     return (
         <div>

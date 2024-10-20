@@ -2,7 +2,7 @@ import Personal from "./Personal"
 import Education from "./Education"
 import Experience from "./Experience"
 
-export default function EditComps({nameText, handleNameChange, handleEduChange}) {
+export default function EditComps({nameText, handleNameChange, handleEduChange, handleExpChange}) {
 
 
     return (
@@ -11,7 +11,7 @@ export default function EditComps({nameText, handleNameChange, handleEduChange})
         nameText={nameText}
         handleNameChange={handleNameChange} />
         <Education handleEduChange={handleEduChange}/>
-        <Experience />
+        <Experience handleExpChange={handleExpChange}/>
         </div>
     )
 }

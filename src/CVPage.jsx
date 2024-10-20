@@ -1,4 +1,4 @@
-export default function CVPage({nameText, eduArr}) {
+export default function CVPage({nameText, eduArr, expArr}) {
     return (
         <div className="cvPage">
             <div className="cvName">
@@ -9,6 +9,10 @@ export default function CVPage({nameText, eduArr}) {
 
             <div className="eduArrs">
                 {eduArr}
+            </div>
+
+            <div className="cvExperience">
+                {expArr}
             </div>
         </div>
     )
