@@ -6,10 +6,14 @@ import CVPage from './CVPage'
 function App() {
 
   //use App state
-  const [nameText, setText] = useState("");
+  const [nameText, setText] = useState(["","",""]);
 
-  function handleNameChange(event) {
-    setText(event.target.value);
+  function handleNameChange(event, id) {
+
+    let newText = [...nameText];
+    newText[id] = event.target.value;
+
+    setText(newText);
 }
 
 
