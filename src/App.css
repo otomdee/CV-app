@@ -1,9 +1,164 @@
 .main {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  height: 100%;
 }
 
 .editDiv {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  margin: 20px;
+  height: 100%;
+}
+
+.header, .editComps > div, .editComps > form {
+  background-color: #5a5959;
+  margin: 20px 0;
+  padding: 10px 15px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.45);
+  -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.45);
+  -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.45);;
+}
+
+.header {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.personalFields {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
+  gap: 15px;
+}
+
+.personalFields > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.personalFields input, #educationForm input, #experienceForm input{
+  padding: 7px 5px;
+}
+
+.fullNameField {
+  grid-row: 2/3;
+  grid-column: 1/3;
+}
+
+.emailField {
+  grid-row: 3/4;
+  grid-column: 1/2;
+}
+
+.phoneField {
+  grid-row: 3/4;
+  grid-column: 2/3;
+}
+
+.fieldHeader {
+  font-size: 20px;
+}
+
+#educationForm {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+#educationForm > header, #experienceForm > header {
+  font-size: 20px;
+}
+
+#educationForm div:nth-child(-n+6), #experienceForm div:nth-child(-n+5) {
+  display: flex;
+  flex-direction: column;
+}
+
+.edu-degree {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.edu-major {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.edu-school {
+  grid-column: 1/3;
+  grid-row: 3/4;
+}
+
+.edu-startDate {
+  grid-column: 1/2;
+  grid-row: 4/5;
+}
+
+.edu-endDate {
+  grid-column: 2/3;
+  grid-row: 4/5;
+}
+
+.edu-buttons {
+  grid-row: 5/6;
+  grid-column: 2/3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+#educationSubmit {
+  margin-right: 10px;
+}
+
+#experienceForm {
+  display: grid;
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.exp-jobTitle {
+  grid-row: 2/3;
+  grid-column: 1/3;
+}
+
+.exp-employer {
+  grid-row: 3/4;
+  grid-column: 1/3;
+}
+
+.exp-startDate {
+  grid-row: 4/5;
+  grid-column: 1/2;
+}
+
+.exp-endDate {
+  grid-row: 4/5;
+  grid-column: 2/3;
+}
+
+.exp-desc {
+  grid-row: 5/8;
+  grid-column: 1/3;
+}
+
+.exp-buttons {
+  grid-row: 8/9;
+  grid-column: 2/3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+#jobDescription {
+  width: 100%;
+}
+
+#jobSubmit {
+  margin-right: 10px;
 }

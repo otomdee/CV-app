@@ -23,33 +23,47 @@ export default function Experience({handleExpChange}) {
         <form id="experienceForm" onSubmit={handleSubmit}>
             <header>Experience</header>
 
-            <label htmlFor="jobTitle">Job Title*</label>
-            <input type="text" id="jobTitle" className="jobTitle" required
-            value={formValues.jobTitle}
-            onChange={(event) => setFormValues({...formValues, jobTitle: event.target.value})}/>
+            <div className="exp-jobTitle">
+                <label htmlFor="jobTitle">Job Title*</label>
+                <input type="text" id="jobTitle" className="jobTitle" required
+                value={formValues.jobTitle}
+                onChange={(event) => setFormValues({...formValues, jobTitle: event.target.value})}/>
+            </div>
 
-            <label htmlFor="employer">Employer*</label>
-            <input type="text" className="employer" id="employer" required
-            value={formValues.employer}
-            onChange={(event) => setFormValues({...formValues, employer: event.target.value})}/>
+            <div className="exp-employer">
+                <label htmlFor="employer">Employer*</label>
+                <input type="text" className="employer" id="employer" required
+                value={formValues.employer}
+                onChange={(event) => setFormValues({...formValues, employer: event.target.value})}/>
+            </div>
 
+           <div className="exp-startDate">
             <label htmlFor="jobStart">Start Date*</label>
-            <input type="date" id="jobStart" required
-            value={formValues.startDate}
-            onChange={(event) => setFormValues({...formValues, startDate: event.target.value})}/>
+                <input type="date" id="jobStart" required
+                value={formValues.startDate}
+                onChange={(event) => setFormValues({...formValues, startDate: event.target.value})}/>
+           </div>
 
-            <label htmlFor="jobEnd">End Date*</label>
-            <input type="date" id="jobEnd" required
-            value={formValues.endDate}
-            onChange={(event) => setFormValues({...formValues, endDate: event.target.value})}/>
+            <div className="exp-endDate">
+                <label htmlFor="jobEnd">End Date*</label>
+                <input type="date" id="jobEnd" required
+                value={formValues.endDate}
+                onChange={(event) => setFormValues({...formValues, endDate: event.target.value})}/>
+            </div>
 
-            <label htmlFor="jobDescription">Description (responsibilities, achievements, etc)</label>
-            <textarea id="jobDescription"
-            value={formValues.description}
-            onChange={(event) => setFormValues({...formValues, description: event.target.value})}></textarea>
+            <div className="exp-desc">
+                <label htmlFor="jobDescription">Description (responsibilities, achievements, etc)</label>
+                <textarea id="jobDescription"
+                rows="13"
+                cols="30"
+                value={formValues.description}
+                onChange={(event) => setFormValues({...formValues, description: event.target.value})}></textarea>
+            </div>
 
-            <button id="jobSubmit" type="submit">Save</button>
-            <button id="jobCancel" type="button" onClick={handleCancel}>Cancel</button>
+            <div className="exp-buttons">
+                <button id="jobSubmit" type="submit">Save</button>
+                <button id="jobCancel" type="button" onClick={handleCancel}>Cancel</button>
+            </div>
         </form>
     )
 }

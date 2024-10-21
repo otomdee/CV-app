@@ -53,7 +53,7 @@ function App() {
           expArr={expArr}
           />
         </div>
-       </div>
+      </div>
   )
 }
 
