@@ -106,6 +106,10 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.edu-header-container > header, .exp-header-container > header {
+  font-size: 20px;
+}
+
 .educationForm div:nth-child(-n+5), .experienceForm div:nth-child(-n+4) {
   display: flex;
   flex-direction: column;
@@ -311,4 +315,62 @@
 
 .cv-exp-desc {
   grid-row: 3/4;
+}
+
+/* Editable fields */
+
+.edit-edu-Div > div {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+}
+
+.edit-edu-visible {
+  animation: drop 50ms 1 forwards;
+  transform: scaleY(0.1);
+  transform-origin: 50% 0%;
+}
+
+.edit-edu-text {
+  grid-column: 1/2;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-edu-Buttons {
+  display: flex;
+  grid-column: 2/3;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.edit-edu-Buttons > svg {
+  margin: 10px;
+}
+
+.edit-edu-Buttons > svg:hover {
+  cursor: pointer;
+}
+
+.edit-edu-degree {
+  font-weight: bold;
+}
+
+.edit-edu-uni, .edit-edu-dates {
+  font-size: 14px;
+}
+
+#edit-edu-button {
+  width: 100%;
+  padding: 10px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#edit-edu-button svg {
+  margin-right: 10px;
+  height: 18px;
+  width: 18px;
 }

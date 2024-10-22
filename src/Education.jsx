@@ -83,7 +83,12 @@ export default function Education({handleEduChange, editableEduArr}) {
                     </div>
 
     const editState = <div className="edit-edu-wrap">
-    <div className="edit-edu-main">
+        <div className="edu-header-container">
+            <header>Education</header>
+            <span className="caret" onClick={handleVisibleChange}>&#8964;</span>
+        </div>
+        <div className={"edit-edu-visible" + " " + visible}>
+        <div className="edit-edu-main">
     {editableEduArr.map((item) => {
 
         let startDate = new Date(item.startDate);
@@ -94,10 +99,16 @@ export default function Education({handleEduChange, editableEduArr}) {
 
         return (<div className="edit-edu-Div" key={item.id}>
                     <hr />
-                    <div className="edit-edu-text">
-                        <span className="edit-edu-degree">{item.degree + " (" + item.major + ")"}</span>
-                        <span className="edit-edu-uni">{item.school}</span>
-                        <span className="edit-edu-dates">{startDate + " - " + endDate}</span>
+                    <div>
+                        <div className="edit-edu-text">
+                            <span className="edit-edu-degree">{item.degree + " (" + item.major + ")"}</span>
+                            <span className="edit-edu-uni">{item.school}</span>
+                            <span className="edit-edu-dates">{startDate + " - " + endDate}</span>
+                        </div>
+                        <div className="edit-edu-Buttons">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
+                        </div>
                     </div>
                 </div>)
     })}
@@ -109,6 +120,7 @@ export default function Education({handleEduChange, editableEduArr}) {
             <span>Add another education</span>
         </button>
     </div>
+        </div>
                     </div>
 
     let renderStates = {formState: formState, editState: editState}
