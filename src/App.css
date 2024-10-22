@@ -27,11 +27,33 @@
   font-weight: bold;
 }
 
+.personal-visible {
+  display: flex;
+  flex-direction: column;
+}
+
+.personal-header-container, .exp-header-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
 .personalFields {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows:  1fr 1fr;
   grid-template-columns: 3fr 2fr;
   gap: 15px;
+
+  animation: drop 50ms 1 forwards;
+  transform: scaleY(0.1);
+  transform-origin: 50% 0%;
+}
+
+@keyframes drop {
+  100% {
+    transform: scaleY(1);
+    transform-origin: 50% 0%;
+  }
 }
 
 .personalFields > div {
@@ -39,22 +61,22 @@
   flex-direction: column;
 }
 
-.personalFields input, #educationForm input, #experienceForm input{
+.personalFields input, .educationForm input, .experienceForm input{
   padding: 7px 5px;
 }
 
 .fullNameField {
-  grid-row: 2/3;
+  grid-row: 1/2;
   grid-column: 1/3;
 }
 
 .emailField {
-  grid-row: 3/4;
+  grid-row: 2/3;
   grid-column: 1/2;
 }
 
 .phoneField {
-  grid-row: 3/4;
+  grid-row: 2/3;
   grid-column: 2/3;
 }
 
@@ -62,93 +84,106 @@
   font-size: 20px;
 }
 
-#educationForm {
+.educationForm {
   display: grid;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   grid-template-columns: 1fr 1fr;
   gap: 15px;
+
+  animation: drop 50ms 1 forwards;
+  transform: scaleY(0.1);
+  transform-origin: 50% 0%;
 }
 
-#educationForm > header, #experienceForm > header {
+.educationForm > header, .experienceForm > header {
   font-size: 20px;
 }
 
-#educationForm div:nth-child(-n+6), #experienceForm div:nth-child(-n+5) {
+.edu-header-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.educationForm div:nth-child(-n+5), .experienceForm div:nth-child(-n+4) {
   display: flex;
   flex-direction: column;
 }
 
 .edu-degree {
   grid-column: 1/2;
-  grid-row: 2/3;
+  grid-row: 1/2;
 }
 
 .edu-major {
   grid-column: 2/3;
-  grid-row: 2/3;
+  grid-row: 1/2;
 }
 
 .edu-school {
   grid-column: 1/3;
-  grid-row: 3/4;
+  grid-row: 2/3;
 }
 
 .edu-startDate {
   grid-column: 1/2;
-  grid-row: 4/5;
+  grid-row: 3/4;
 }
 
 .edu-endDate {
   grid-column: 2/3;
-  grid-row: 4/5;
+  grid-row: 3/4;
 }
 
 .edu-buttons {
-  grid-row: 5/6;
+  grid-row: 4/5;
   grid-column: 2/3;
   display: flex;
   justify-content: flex-end;
   align-items: end;
 }
 
-#educationSubmit {
+#educationSubmit, #jobSubmit {
   margin-right: 10px;
 }
 
-#experienceForm {
+.experienceForm {
   display: grid;
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-rows: repeat(7, 1fr);
   grid-template-columns: 1fr 1fr;
   gap: 15px;
+
+  animation: drop 50ms 1 forwards;
+  transform: scaleY(0.1);
+  transform-origin: 50% 0%;
 }
 
 .exp-jobTitle {
-  grid-row: 2/3;
+  grid-row: 1/2;
   grid-column: 1/3;
 }
 
 .exp-employer {
-  grid-row: 3/4;
+  grid-row: 2/3;
   grid-column: 1/3;
 }
 
 .exp-startDate {
-  grid-row: 4/5;
+  grid-row: 3/4;
   grid-column: 1/2;
 }
 
 .exp-endDate {
-  grid-row: 4/5;
+  grid-row: 3/4;
   grid-column: 2/3;
 }
 
 .exp-desc {
-  grid-row: 5/8;
+  grid-row: 4/7;
   grid-column: 1/3;
 }
 
 .exp-buttons {
-  grid-row: 8/9;
+  grid-row: 7/8;
   grid-column: 2/3;
   display: flex;
   justify-content: flex-end;
@@ -159,6 +194,23 @@
   width: 100%;
 }
 
-#jobSubmit {
-  margin-right: 10px;
+.caret {
+  background-color: #5a5959;
+  width: auto;
+  text-align: end;
+  font-size: 25px;
+  transform: translateY(-20%);
+  user-select: none;
+}
+
+.caret:hover {
+  cursor: pointer;
+}
+
+.visible {
+  transition: 100ms;
+}
+
+.hidden {
+  display: none;
 }
