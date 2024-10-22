@@ -22,14 +22,16 @@ function App() {
 
   function handleEduChange(event, eduObj) {
     let newArr = [...eduArr];
-    newArr.push(< CVEducation eduObj={eduObj} />)
+    const newEdu = {content:< CVEducation eduObj={eduObj} />, id: crypto.randomUUID()}
+    newArr.push(newEdu);
 
     setEduArr(newArr);
   }
 
   function handleExpChange(event, expObj) {
     let newArr = [...expArr];
-    newArr.push(< CVExperience expObj={expObj} />)
+    const newExp = {content: < CVExperience expObj={expObj} />, id: crypto.randomUUID()}
+    newArr.push(newExp);
 
     setExpArr(newArr);
   }

@@ -7,11 +7,13 @@ export default function CVEducation({eduObj}) {
     endDate = endDate.toLocaleString('en-US', { month: 'short', year: 'numeric' });
 
     return (
-        <div>
+        <div className="cv-edu-wrap">
             <h1>Education</h1>
-            <span>{startDate + "-" + endDate}</span>
-            <span>{eduObj.degree + "(" + eduObj.major + ")"}</span>
-            <span>{eduObj.school}</span>
+            <span className="cv-edu-date">{startDate + " - " + endDate}</span>
+            <div className="cv-edu-textWrap">
+                <span className="cv-edu-degree">{eduObj.degree + " (" + eduObj.major + ")"}</span>
+                <span className="cv-edu-school">{eduObj.school}</span>
+            </div> 
         </div>
     )
 }

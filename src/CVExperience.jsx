@@ -7,12 +7,14 @@ export default function CVExperience({expObj}) {
     endDate = endDate.toLocaleString('en-US', { month: 'short', year: 'numeric' });
 
     return (
-        <div>
+        <div className="cv-exp-wrap">
             <h1>Professional Experience</h1>
-            <span>{startDate + "-" + endDate}</span>
-            <span>{expObj.jobTitle}</span>
-            <span>{expObj.employer}</span>
-            <span>{expObj.description}</span>
+            <span className="cv-exp-date">{startDate + "-" + endDate}</span>
+            <div className="cv-exp-textWrap">
+                <span className="cv-exp-job">{expObj.jobTitle}</span>
+                <span className="cv-exp-employer">{expObj.employer}</span>
+                <span className="cv-exp-desc">{expObj.description}</span>
+            </div>
         </div>
     )
 }
