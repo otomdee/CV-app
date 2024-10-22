@@ -11,6 +11,7 @@ function App() {
   const [nameText, setText] = useState(["","",""]);
   const [eduArr, setEduArr] = useState([]);
   const [expArr, setExpArr] = useState([]);
+  const [editableArr, setEditableArr] = useState([[],[]]);
 
   function handleNameChange(event, id) {
 
@@ -21,11 +22,21 @@ function App() {
 }
 
   function handleEduChange(event, eduObj) {
+    const thisID = crypto.randomUUID();
     let newArr = [...eduArr];
-    const newEdu = {content:< CVEducation eduObj={eduObj} />, id: crypto.randomUUID()}
+    const newEdu = {content:< CVEducation eduObj={eduObj} />, id: thisID}
     newArr.push(newEdu);
 
     setEduArr(newArr);
+
+    //set a new array for edits since extracting content from CVEducation component is stressful
+    let newEditableArr = [...editableArr];
+    //copy eduObj with id
+    let newEduObj = {...eduObj};
+    newEduObj.id = thisID;
+    newEditableArr[0].push(newEduObj);
+
+    setEditableArr(newEditableArr);
   }
 
   function handleExpChange(event, expObj) {
@@ -45,6 +56,7 @@ function App() {
           handleNameChange={handleNameChange}
           handleEduChange={handleEduChange}
           handleExpChange={handleExpChange}
+          editableEduArr={editableArr[0]}
           />
         </div>
 
