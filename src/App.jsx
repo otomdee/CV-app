@@ -12,6 +12,7 @@ function App() {
   const [eduArr, setEduArr] = useState([]);
   const [expArr, setExpArr] = useState([]);
   const [editableArr, setEditableArr] = useState([[],[]]);
+  const [eduExpStates, setEduExpStates] = useState(["formState", ""])
 
   function handleNameChange(event, id) {
 
@@ -37,14 +38,40 @@ function App() {
     newEditableArr[0].push(newEduObj);
 
     setEditableArr(newEditableArr);
+
+    let newEduExpStates = [...eduExpStates];
+    newEduExpStates[0] = "editState";
+    setEduExpStates(newEduExpStates);
   }
 
+  function eduNewForm() {
+    let newEduExpStates = [...eduExpStates];
+    newEduExpStates[0] = "formState";
+    setEduExpStates(newEduExpStates);
+  }
+  
   function handleExpChange(event, expObj) {
     let newArr = [...expArr];
     const newExp = {content: < CVExperience expObj={expObj} />, id: crypto.randomUUID()}
     newArr.push(newExp);
 
     setExpArr(newArr);
+  }
+
+  function handleEduDelete(id) {
+    let newEduArr = [...eduArr];
+    let newEditableArr = [...editableArr];
+
+    newEduArr = newEduArr.filter((obj) => {
+      return (obj.id !== id) 
+    })
+
+    newEditableArr[0] = newEditableArr[0].filter((obj) => {
+      return (obj.id !== id)
+    })
+
+    setEduArr(newEduArr);
+    setEditableArr(newEditableArr);
   }
 
   return (
@@ -57,6 +84,9 @@ function App() {
           handleEduChange={handleEduChange}
           handleExpChange={handleExpChange}
           editableEduArr={editableArr[0]}
+          handleEduDelete={handleEduDelete}
+          eduExpStates={eduExpStates}
+          eduNewForm={eduNewForm}
           />
         </div>
 
