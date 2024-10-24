@@ -1,6 +1,5 @@
 export default function EduFormState({visible, handleVisibleChange, handleSubmit, formValues, handleCancel, handleSetFormValues}) {
 
-
     return (
         <div className="edu-visible">
     <div className="edu-header-container">

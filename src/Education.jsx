@@ -33,13 +33,24 @@ export default function Education({handleEduChange, editableEduArr, handleEduDel
         setFormValues(value);
     }
 
+    function populateForm(id) {
+
+        eduNewForm();
+
+        const fieldContent = editableEduArr.filter((item) => {
+            return (item.id === id)
+        })
+        
+        setFormValues(fieldContent[0]);
+    }
+
     let formState = <EduFormState 
                     visible={visible}
                     handleVisibleChange={handleVisibleChange} 
                     handleSubmit={handleSubmit} 
                     formValues={formValues}handleCancel={handleCancel}
-                    handleSetFormValues={handleSetFormValues}
-                        
+                    handleSetFormValues={handleSetFormValues}  
+                    editableEduArr={editableEduArr}  
                     />
 
     let editState = <EduEditState 
@@ -48,6 +59,7 @@ export default function Education({handleEduChange, editableEduArr, handleEduDel
                     editableEduArr={editableEduArr} 
                     handleFieldDelete={handleFieldDelete}
                     eduNewForm={eduNewForm}
+                    populateForm={populateForm}
                     />
 
     let renderStates = {formState: formState, editState: editState}
