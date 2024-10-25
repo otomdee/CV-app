@@ -1,4 +1,5 @@
 export default function CVPage({nameText, eduArr, expArr}) {
+
     return (
         <div className="cvPage">
             <div className="cvName">

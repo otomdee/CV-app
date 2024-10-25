@@ -12,7 +12,7 @@ function App() {
   const [eduArr, setEduArr] = useState([]);
   const [expArr, setExpArr] = useState([]);
   const [editableArr, setEditableArr] = useState([[],[]]);
-  const [eduExpStates, setEduExpStates] = useState(["formState", ""])
+  const [eduExpStates, setEduExpStates] = useState(["formState", "formState"])
 
   function handleNameChange(event, id) {
 
@@ -22,6 +22,7 @@ function App() {
     setText(newText);
 }
 
+  //edu functions
   function handleEduChange(event, eduObj) {
     const thisID = crypto.randomUUID();
     let newArr = [...eduArr];
@@ -86,14 +87,6 @@ function App() {
     setEduExpStates(newEduExpStates);
   }
 
-  function handleExpChange(event, expObj) {
-    let newArr = [...expArr];
-    const newExp = {content: < CVExperience expObj={expObj} />, id: crypto.randomUUID()}
-    newArr.push(newExp);
-
-    setExpArr(newArr);
-  }
-
   function handleEduDelete(id) {
     let newEduArr = [...eduArr];
     let newEditableArr = [...editableArr];
@@ -107,6 +100,86 @@ function App() {
     })
 
     setEduArr(newEduArr);
+    setEditableArr(newEditableArr);
+  }
+
+  //exp functions
+  function handleExpChange(event, expObj) {
+    const thisID = crypto.randomUUID();
+    let newArr = [...expArr];
+    const newExp = {content: < CVExperience expObj={expObj} />, id: thisID}
+    newArr.push(newExp);
+
+    setExpArr(newArr);
+
+    let newEditableArr = [...editableArr];
+    //copy expObj with id
+    let newExpObj = {...expObj};
+    newExpObj.id = thisID;
+    newEditableArr[1].push(newExpObj);
+
+    setEditableArr(newEditableArr);
+
+    let newEduExpStates = [...eduExpStates];
+    newEduExpStates[1] = "editState";
+    setEduExpStates(newEduExpStates);
+  }
+
+  function expNewForm() {
+    let newEduExpStates = [...eduExpStates];
+    newEduExpStates[1] = "formState";
+    setEduExpStates(newEduExpStates);
+  }
+
+  function handleExpEdit(idObj) {
+    //copy obj and take out ID
+    let expObj = {...idObj};
+    const thisID = idObj.id;
+
+    delete expObj.id;
+
+    //create new obj for expArr and replace old one
+    const newObj = {content:< CVExperience expObj={expObj} />, id: thisID}
+    let newArr = [...expArr];
+
+    newArr.forEach((item, index) => {
+      if(item.id === newObj.id) {
+        newArr[index] = newObj;
+      }
+    })
+
+    setExpArr(newArr);
+
+    //do same change on editableArr
+    let newEditableArr = [...editableArr];
+
+    newEditableArr[1].forEach((item, index) => {
+
+      if(item.id === idObj.id) {
+        newEditableArr[1][index] = idObj;
+      }
+    })
+
+    setEditableArr(newEditableArr);
+
+    let newEduExpStates = [...eduExpStates];
+    newEduExpStates[1] = "editState";
+    setEduExpStates(newEduExpStates);
+  }
+
+  function handleExpDelete(id) {
+    let newExpArr = [...expArr];
+    let newEditableArr = [...editableArr];
+
+    newExpArr = newExpArr.filter((obj) => {
+      return (obj.id !== id) 
+    })
+
+    newEditableArr[1] = newEditableArr[1].filter((obj) => {
+      return (obj.id !== id)
+    })
+
+    setExpArr(newExpArr);
     setEditableArr(newEditableArr);
   }
 
@@ -124,6 +197,10 @@ function App() {
           eduExpStates={eduExpStates}
           eduNewForm={eduNewForm}
           handleEduEdit={handleEduEdit}
+          expNewForm={expNewForm}
+          handleExpEdit={handleExpEdit}
+          handleExpDelete={handleExpDelete}
+          editableExpArr={editableArr[1]}
           />
         </div>
 
