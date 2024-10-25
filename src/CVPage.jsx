@@ -19,13 +19,13 @@ export default function CVPage({nameText, eduArr, expArr}) {
 
             <div className="eduArrs">             
                 {eduArr.map((eduDiv) => {
-                    return <div key={eduDiv.key}>{eduDiv.content}</div>
+                    return <div key={eduDiv.id}>{eduDiv.content}</div>
                 })}
             </div>
 
             <div className="cvExperience">
                 {expArr.map((expDiv) => {
-                    return <div key={expDiv.key}>{expDiv.content}</div>
+                    return <div key={expDiv.id}>{expDiv.content}</div>
                 })}
             </div>
         </div>
