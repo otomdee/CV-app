@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import EditComps from './editComps'
+import EditComps from './EditComps'
 import './App.css'
 import CVPage from './CVPage'
 import CVEducation from './CVEducation'
