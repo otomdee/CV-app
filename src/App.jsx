@@ -50,6 +50,42 @@ function App() {
     setEduExpStates(newEduExpStates);
   }
   
+  function handleEduEdit(idObj) {
+    //copy obj and take out ID
+    let eduObj = {...idObj};
+    const thisID = idObj.id;
+
+    delete eduObj.id;
+
+    //create new obj for eduArr and replace old one
+    const newObj = {content:< CVEducation eduObj={eduObj} />, id: thisID}
+    let newArr = [...eduArr];
+
+    newArr.forEach((item, index) => {
+      if(item.id === newObj.id) {
+        newArr[index] = newObj
+      }
+    })
+
+    setEduArr(newArr);
+
+    //do same change on editableArr
+    let newEditableArr = [...editableArr];
+
+    newEditableArr[0].forEach((item, index) => {
+
+      if(item.id === idObj.id) {
+        newEditableArr[0][index] = idObj;
+      }
+    })
+
+    setEditableArr(newEditableArr);
+
+    let newEduExpStates = [...eduExpStates];
+    newEduExpStates[0] = "editState";
+    setEduExpStates(newEduExpStates);
+  }
+
   function handleExpChange(event, expObj) {
     let newArr = [...expArr];
     const newExp = {content: < CVExperience expObj={expObj} />, id: crypto.randomUUID()}
@@ -87,6 +123,7 @@ function App() {
           handleEduDelete={handleEduDelete}
           eduExpStates={eduExpStates}
           eduNewForm={eduNewForm}
+          handleEduEdit={handleEduEdit}
           />
         </div>
 

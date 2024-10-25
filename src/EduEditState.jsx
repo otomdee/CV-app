@@ -15,11 +15,14 @@ export default function EduEditState({visible, handleVisibleChange, editableEduA
                     let endDate = new Date(item.endDate);
                     endDate = endDate.toLocaleString('en-US', { month: 'short', year: 'numeric' });
 
+                    let major;
+                    item.major === "" ? major = "" : major = " (" + item.major + ")";
+
                     return (<div className="edit-edu-Div" key={item.id}>
                                 <hr />
                                 <div>
                                     <div className="edit-edu-text">
-                                        <span className="edit-edu-degree">{item.degree + " (" + item.major + ")"}</span>
+                                        <span className="edit-edu-degree">{item.degree + major}</span>
                                         <span className="edit-edu-uni">{item.school}</span>
                                         <span className="edit-edu-dates">{startDate + " - " + endDate}</span>
                                     </div>

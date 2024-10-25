@@ -2,7 +2,7 @@ import Personal from "./Personal"
 import Education from "./Education"
 import Experience from "./Experience"
 
-export default function EditComps({nameText, handleNameChange, handleEduChange, handleExpChange, editableEduArr, handleEduDelete, eduExpStates, eduNewForm}) {
+export default function EditComps({nameText, handleNameChange, handleEduChange, handleExpChange, editableEduArr, handleEduDelete, eduExpStates, eduNewForm, handleEduEdit}) {
 
     return (
         <div className='editComps'>
@@ -14,6 +14,7 @@ export default function EditComps({nameText, handleNameChange, handleEduChange, 
                     handleEduDelete={handleEduDelete}
                     eduState={eduExpStates[0]}
                     eduNewForm={eduNewForm}
+                    handleEduEdit={handleEduEdit}
                     />
         <Experience handleExpChange={handleExpChange}/>
         </div>
